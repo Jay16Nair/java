@@ -1,0 +1,42 @@
+package conn1;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class JDBC1 {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/lib"; // Replace with your database URL
+        String user = "root";
+        String password = "12345";
+
+        try {
+        	Class.forName("com.mysql.cj.jdbc.Driver");
+            // Establish a connection to the database
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+            // Create a statement for executing SQL queries
+            Statement st = conn.createStatement();
+
+            // SQL query to execute
+            String sqlQuery = "SELECT * FROM kitab"; // Replace with your table name
+
+            // Execute the query and get the result set
+            ResultSet rst = st.executeQuery(sqlQuery);
+
+            // Process the result set
+            while (rst.next()) {
+                int id = rst.getInt("id"); // Replace with your column names
+                String name = rst.getString("title");
+                System.out.println("ID: " + id + ", Title: " + name);
+            }
+
+            // Close the resources
+            rst.close();
+            st.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
