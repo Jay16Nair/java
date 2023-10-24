@@ -11,6 +11,8 @@ public class GUI1 {
             add(l);
             setVisible(true);
             setSize(400, 400);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setLocationRelativeTo(null);
         }
     }
 }
