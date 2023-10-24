@@ -1,0 +1,16 @@
+import javax.swing.*;
+
+public class GUI1 {
+    public static void main(String[] args) {
+        ABC obj = new ABC();
+    }
+
+    public static class ABC extends JFrame {
+        public ABC() {
+            JLabel l = new JLabel("Hello from GUI");
+            add(l);
+            setVisible(true);
+            setSize(400, 400);
+        }
+    }
+}
